@@ -27,12 +27,14 @@ export const TAGLINE = {
 
 export const NAV = {
   en: [
+    { label: 'About', href: '/about' },
     { label: 'Projects', href: '/#projects' },
     { label: 'Codification', href: '/codification' },
     { label: 'Now', href: '/now' },
     { label: 'Contact', href: '/contact' },
   ],
   ko: [
+    { label: '소개', href: '/ko/about' },
     { label: '프로젝트', href: '/ko/#projects' },
     { label: '코드화', href: '/ko/codification' },
     { label: 'Now', href: '/ko/now' },

@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="ko"
+  title="소개"
+  description="커리어 타임라인, 학력, 자격증, 언어."
+  pathname="/ko/about"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-6" style="line-height: 1.2;">소개</h1>
+      <blockquote class="text-lg mb-6">
+        "물리적 토대 위에서 논리적 지능을 살린다."
+      </blockquote>
+      <p style="color: var(--fg-soft);">
+        하드웨어의 깊이와 AI 지능 사이를 잇는 인프라 엔지니어. 네트워크 인프라에서 시작해, 엔드포인트와
+        IT 지원, VMware 가상화를 거쳐 지금은 크로스보더 이커머스 지원을 위한 AI-native 개발자 도구를
+        만든다. 세 개 언어, 네 개 직무, 한 가지 일관된 흐름 — 표면 아래의 레이어를 책임지면서 그 위의
+        레이어가 깨끗하게 동작하도록 한다.
+      </p>
+    </header>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-6">경력</h2>
+
+      <div class="mb-8">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Global-e — Technical Support Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2025.12 – 현재
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          서울 (하이브리드) · Application / SQL / Tech Support 팀
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>End-to-end 머천트 기술 지원, 케이스 풀 오너십과 정밀한 이슈 분석</li>
+          <li>애플리케이션 로그, SQL 진단, 디버깅 도구로 root cause 분석</li>
+          <li>글로벌 타임존을 가로지르는 cross-functional 에스컬레이션 조율</li>
+          <li>임팩트 / 긴급도 / 팀간 의존성 기준의 동시 케이스 관리</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/global-e">sanctuary 프로젝트 보기 →</a></p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">PuzzleSystems — VMware Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2025.06 – 2025.11
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          서울 영등포 · Virtualization / VMware / Cloud Platform 팀
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>VMware 환경 정기 점검 및 취약점 진단</li>
+          <li>NSX 기반 네트워크 가상화 원격 / 현장 기술 지원</li>
+          <li>엔터프라이즈 클라이언트 대상 Windows 11 VDI 마이그레이션 배포</li>
+          <li>IDC 네트워크 안정성 및 보안 개선</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/puzzle">GPU VDI 벤치마크 프로젝트 보기 →</a></p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Toss Insurance — IT Supporter</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2025.01 – 2025.05
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          서울 구로 · Internal System / Operation / System Platform 팀
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>Windows / macOS 환경 지원, M365 사용자 라이프사이클 및 라이선스 관리</li>
+          <li>Wi-Fi에 영향을 주는 IP 고갈 / 서브넷 오설정 진단</li>
+          <li>Google Workspace 2FA 및 보안 접근 예외 관리</li>
+          <li>맬웨어 탐지 정확성 검증으로 false positive 감소</li>
+          <li>Python + Slack Bot 보안 솔루션 사용자 프로비저닝 자동화</li>
+          <li>공공기관 소프트웨어 충돌 해결을 위한 Hypervisor 격리 환경 구축</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/toss">Slack Bot 자동화 프로젝트 보기 →</a></p>
+      </div>
+
+      <div class="mb-4">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Ubiquoss — Network Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2023.02 – 2024.04
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          경기 성남 · Network / Architect / Overseas Tech 팀
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>네트워크 아키텍처 설계 및 시스템 안정성 검증을 위한 시뮬레이션 환경 구축</li>
+          <li>데이터센터 트래픽 안정성을 위한 이중화 모니터링 / failover 경로 구성</li>
+          <li>초저지연 / 고대역폭 환경 튜닝 + L4 로드 밸런싱</li>
+          <li>L3 스위치 OS 검증 (결함 탐지 및 안정성 향상)</li>
+          <li>한국 / 일본 / 미국 고객 대상 실시간 기술 지원</li>
+          <li>부서 / 층 단위 세그멘테이션과 접근 제어를 위한 CIDR 기반 서브넷 설계</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/ubiquoss">Private 5G 프로젝트 보기 →</a></p>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">학력</h2>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <strong>학점은행제</strong> — 컴퓨터과학 학사
+          <span style="color: var(--fg-soft);">(2021.01 – 2024.08)</span>
+        </li>
+        <li>
+          <strong>Cisco Networking Academy</strong> — System / Networking / LAN·WAN Management
+          수료 과정
+          <span style="color: var(--fg-soft);">(2021 – 2022)</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">자격증</h2>
+      <ul class="space-y-2 text-sm">
+        <li><strong>HashiCorp Certified: Terraform Associate (003)</strong></li>
+        <li><strong>네트워크관리사 2급</strong> — KAIT</li>
+        <li><strong>JLPT N1</strong> — 일본어능력시험</li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">언어</h2>
+      <ul class="space-y-2 text-sm">
+        <li><strong>한국어</strong> — Native</li>
+        <li><strong>영어</strong> — Professional working proficiency</li>
+        <li><strong>일본어</strong> — Professional working proficiency (JLPT N1)</li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">기술</h2>
+      <p class="text-sm" style="color: var(--fg);">
+        Linux, Windows, macOS · Python, TypeScript, SQL, Bash, PowerShell · 네트워크 (L2/L3, 5G
+        RAN/Core, SNMP, TCP/IP) · 보안 · 가상화 (VMware vSphere / NSX) · 자동화 · Technical
+        Support · IaC (Terraform) · MCP (Model Context Protocol) · Coralogix · MSSQL · Snowflake
+        · Atlassian (JIRA / Confluence) · Zendesk · Microsoft 365
+      </p>
+    </section>
+
+    <section>
+      <p class="text-sm" style="color: var(--fg-soft);">
+        문의 환영합니다 — <a href="/ko/contact">연락처</a>.
+      </p>
+    </section>
+  </article>
+</BaseLayout>

@@ -32,6 +32,8 @@
         name: github-pages
         url: ${{ steps.deployment.outputs.page_url }}
       steps:
-        - name: Deploy to GitHub Pages
-          id: deployment
-          uses: actions/deploy-pages@v4
+        - name: Install, build, and upload your site
+          uses: withastro/action@v3
+          with:
+            package-manager: npm@latest
+            node-version: 22

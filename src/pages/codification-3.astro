@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Verifying the verification';
+const description =
+  'Two inflection points on what it means to verify the codified verification itself — passing stamps that aren\'t verification, and narrowing your own tool with your own hand.';
+---
+
+<BaseLayout
+  lang="en"
+  title={title}
+  description={description}
+  pathname="/codification-3"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        Retrospective · Essay #3 · April–May 2026 · ~2 min read
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        Verifying the verification — after the stamp of passing
+      </h1>
+      <p class="text-base mb-4" style="color: var(--fg-soft);">
+        If <a href="/codification-1">essay #1</a> was about how to codify the system from within,
+        and <a href="/codification-2">essay #2</a> about how to verify what leaves it, this is
+        about <em>verifying the codified verification itself</em>. Two inflection points, one
+        thesis.
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. A passing stamp is not the end of verification</h2>
+      <p class="mb-4">
+        In <a href="/codification-1">essay #1</a> I closed with the RULE-118 hook, the
+        irreversible status-ID block list, and the 13-of-13 <code>verify_safety.sh</code> gate —
+        treating that as the end of codification. Days later, looking again, I found that 13
+        write tools were missing from the matcher in <code>settings.local.json</code>, never
+        reaching the hook at all. A simple thing: <em>the sh hook isn't the whole thing.</em> The
+        hook itself passed; the raw call paths that bypass it were still alive.
+      </p>
+      <p class="mb-4">
+        That's exactly where reading the code and judging it "fine" collapses. A passing stamp
+        and verification actually happening are two different claims. From that point on there
+        had to be a place for <em>live-call verification</em> — actually firing the call and
+        watching what blocks, what passes. Reading is hypothesis; the live call is verification.
+      </p>
+      <p>Don't judge by the cover.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. Narrowing your own tool with your own hand</h2>
+      <p class="mb-4">
+        May 4, 2026. I started watching how I cited results from the composite tools — <code
+          >price_verify</code
+        >, <code>payment_forensics</code>, <code>shipping_diagnostics</code> — and one thing kept
+        catching me. I was writing the result, but often without naming the specific discrepancy
+        field=value I had actually seen, falling instead into general statements. A word here, a
+        sentence there — looked at closely — was not anchored to a specific datum.
+      </p>
+      <p>
+        So I added a warning-only gate, STAGE 4 PR1. Cite a composite result without quoting the
+        concrete discrepancy, and a warning fires. If essay #1's thesis around composite tools
+        was <em>the courage to subtract</em>, this layer is the courage to narrow my own hand
+        using them. The maker of a tool restricting its own use is not a contradiction — it is
+        <em>self-reflection</em>, a layer deeper.
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">
+      There is no right answer. Only what is judged appropriate, in the moment.
+    </blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      Written 2026-05-07 · Korean original: <a href="/ko/codification-3">한국어 원본</a> · Previous:
+      <a href="/codification-2">← Essay #2 — Verification at the boundary</a> · <a href="/codification">All essays</a>
+    </footer>
+  </article>
+</BaseLayout>

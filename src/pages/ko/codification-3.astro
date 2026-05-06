@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = '검증의 검증';
+const description =
+  '코드화한 검증 자체를 다시 검증하는 회고 — 통과 도장은 검증의 끝이 아니라는 발견, 그리고 자기 도구를 자기 손으로 좁히는 layer.';
+---
+
+<BaseLayout
+  lang="ko"
+  title={title}
+  description={description}
+  pathname="/ko/codification-3"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        회고 · 3편 · 2026년 4–5월 · 약 750자
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        검증의 검증 — 통과 도장 이후의 자기반성
+      </h1>
+      <p class="text-base mb-4" style="color: var(--fg-soft);">
+        <a href="/ko/codification-1">1편</a>이 시스템을 어떻게 코드화할지, <a
+          href="/ko/codification-2">2편</a
+        >이 외부로 나가는 것을 어떻게 검증할지의 회고였다면, 3편은 <em
+          >코드화한 검증 자체를 다시 검증하는</em
+        > 회고. 두 변곡점, 한 가지 thesis.
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. 통과 도장은 검증의 끝이 아니다</h2>
+      <p class="mb-4">
+        <a href="/ko/codification-1">1편</a>에서 RULE-118 hook + 비가역 status ID 블록 리스트 +
+        <code>verify_safety.sh</code> 13/13 게이트로 "다 코드화했다"고 마무리했었다. 며칠 후,
+        문득 들춰 보니 <code>settings.local.json</code> matcher에서 write 도구 13개가 hook 실행
+        대상에서 빠져 있었다. 그날 알아낸 단순한 사실 — <em>sh hook이 전부가 아니다</em>. hook
+        자체는 통과했어도, hook을 거치지 않는 raw 호출 경로가 그대로 살아 있었다.
+      </p>
+      <p class="mb-4">
+        코드를 읽어서 "잘 되어 있다"고 판단한 게 정확히 그 자리에서 무너졌다. 통과 도장이 찍혔다는
+        사실과 검증이 실제로 일어났다는 사실은 다른 명제다. 그때부터 <em>실사용 검증</em> — 실제
+        호출을 던져서 차단되는지 / 통과되는지 — 의 자리가 생겼다. 코드 read는 가설, 실호출이 검증.
+      </p>
+      <p>겉표지만 보고 판단하지 말자.</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. 자기 도구를 자기 손으로 다시 좁힌다</h2>
+      <p class="mb-4">
+        2026-05-04. composite 도구 — <code>price_verify</code>, <code>payment_forensics</code>,
+        <code>shipping_diagnostics</code> — 의 결과를 인용하는 내 패턴을 다시 들여다보다 한 가지가
+        거슬렸다. 결과는 적었지만, 어떤 discrepancy 필드=값을 봤는지 명시하지 않은 채 일반론으로
+        서술하는 경우가 많았다는 것. 단어 하나 문장 하나가 — 들여다보면 — 확실한 데이터에 닿아
+        있지 않았다.
+      </p>
+      <p>
+        그래서 STAGE 4 PR1, warning-only gate를 깔았다. composite 결과를 인용하면서 구체
+        discrepancy를 인용하지 않으면 warning이 뜬다. 1편에서 composite 도구를 만들 때 thesis가
+        "비워낼 용기"였다면, 이번에는 그 도구를 쓰는 내 손을 좁히는 layer다. 도구를 만든 사람이 그
+        도구 사용을 다시 제한하는 게 모순이 아니다 — <em>자기반성</em>이 한 단계 더 깊어진 것뿐이다.
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">
+      정답은 없다. 그때그때 적합하다고 판단한 것을 가용할 뿐.
+    </blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      작성일 2026-05-07 · 영문 번역: <a href="/codification-3">English</a> · 이전 글:
+      <a href="/ko/codification-2">← 2편 — 경계에서의 검증</a> · <a href="/ko/codification">전체 목록</a>
+    </footer>
+  </article>
+</BaseLayout>

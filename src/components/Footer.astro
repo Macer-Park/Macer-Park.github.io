@@ -1,0 +1,28 @@
+---
+import { AUTHOR } from '../consts';
+
+interface Props {
+  lang: 'en' | 'ko';
+}
+
+const { lang } = Astro.props;
+const builtLine =
+  lang === 'ko'
+    ? 'Astro + Tailwind으로 직접 작성. 콘텐츠는 마크다운에서 마이그레이션.'
+    : 'Built with Astro + Tailwind. Content sourced from markdown.';
+const copyrightYear = new Date().getFullYear();
+---
+
+<footer
+  class="border-t mt-24 py-10 text-sm"
+  style="border-color: var(--border); color: var(--fg-soft);"
+>
+  <div class="container-wide flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>© {copyrightYear} {AUTHOR.name}. {builtLine}</div>
+    <div class="flex gap-4">
+      <a href={`mailto:${AUTHOR.email}`}>Email</a>
+      <a href={AUTHOR.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      <a href={AUTHOR.github} target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>

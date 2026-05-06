@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AUTHOR } from '../consts';
+---
+
+<BaseLayout
+  lang="en"
+  title="Contact"
+  description="Get in touch."
+  pathname="/contact"
+>
+  <article class="container-prose pt-20 pb-16">
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-8" style="line-height: 1.2;">Contact</h1>
+    <p class="mb-8" style="color: var(--fg-soft);">
+      Open to conversations on technical support engineering, AI-native developer tooling, MCP
+      servers, virtualization, or network infrastructure. {AUTHOR.location}.
+    </p>
+
+    <dl class="space-y-3">
+      <div class="flex gap-4">
+        <dt class="w-24 text-sm uppercase tracking-wider" style="color: var(--fg-soft);">Email</dt>
+        <dd><a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a></dd>
+      </div>
+      <div class="flex gap-4">
+        <dt class="w-24 text-sm uppercase tracking-wider" style="color: var(--fg-soft);">
+          LinkedIn
+        </dt>
+        <dd>
+          <a href={AUTHOR.linkedin} target="_blank" rel="noopener">
+            linkedin.com/in/macer-p-993b27366
+          </a>
+        </dd>
+      </div>
+      <div class="flex gap-4">
+        <dt class="w-24 text-sm uppercase tracking-wider" style="color: var(--fg-soft);">GitHub</dt>
+        <dd>
+          <a href={AUTHOR.github} target="_blank" rel="noopener">github.com/Macer-Park</a>
+        </dd>
+      </div>
+      <div class="flex gap-4">
+        <dt class="w-24 text-sm uppercase tracking-wider" style="color: var(--fg-soft);">
+          Languages
+        </dt>
+        <dd>Korean (Native) · English (Professional) · Japanese (JLPT N1)</dd>
+      </div>
+    </dl>
+  </article>
+</BaseLayout>

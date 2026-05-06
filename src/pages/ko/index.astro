@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MetricBadge from '../../components/MetricBadge.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { AUTHOR, TAGLINE } from '../../consts';
+---
+
+<BaseLayout lang="ko" pathname="/ko/">
+  <section class="container-wide pt-20 pb-16">
+    <div class="text-sm mb-3" style="color: var(--fg-soft);">
+      Technical Support Engineer · 서울
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-6" style="line-height: 1.2;">
+      {TAGLINE.ko.headline}
+    </h1>
+    <p class="text-base sm:text-lg max-w-2xl mb-12" style="color: var(--fg-soft);">
+      {TAGLINE.ko.sub}
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl">
+      <MetricBadge num="60초" label="건당 조사 시간" />
+      <MetricBadge num="379" label="MCP 도구" />
+      <MetricBadge num="15,943" label="캐시 티켓" />
+      <MetricBadge num="1" label="단일 서버" />
+    </div>
+  </section>
+
+  <section id="projects" class="container-wide py-12">
+    <h2 class="text-xl font-semibold mb-2">프로젝트</h2>
+    <p class="text-sm mb-8" style="color: var(--fg-soft);">
+      네 회사, 네 가지 다른 문제 — 각각이 빠진 자동화 레이어를 만들어 해결한 사례.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ProjectCard
+        title="sanctuary — 크로스보더 이커머스 지원 자동화"
+        role="Technical Support Engineer @ Global-e"
+        period="2025.12 – 현재"
+        stack={['TypeScript', 'MCP', 'MSSQL', 'Snowflake', 'Coralogix', 'Playwright']}
+        summary="단일 MCP 서버가 10+ 분산 시스템을 AI-native 조사 인터페이스 하나로 통합. 도구 379개, 캐시 티켓 15,943건, 코드화된 행동 규칙 203건."
+        href="/projects/global-e"
+        highlight={true}
+      />
+      <ProjectCard
+        title="GPU VDI 벤치마크 자동화"
+        role="VMware Engineer @ PuzzleSystems"
+        period="2025.06 – 2025.11"
+        stack={['Python', 'PyTorch', 'TensorFlow', 'VMware vSphere']}
+        summary="SK E&S 가상 vGPU 환경 검증 자동 벤치마크 파이프라인. 사이클 타임: 며칠 → 야간 자동."
+        href="/projects/puzzle"
+      />
+      <ProjectCard
+        title="보안 솔루션 프로비저닝 자동화"
+        role="IT Supporter @ Toss Insurance"
+        period="2025.01 – 2025.05"
+        stack={['Python', 'Slack Bot API', 'Microsoft 365']}
+        summary="Slack Bot 셀프 서비스 프로비저닝. 헬프데스크 문의 70% 감소."
+        href="/projects/toss"
+      />
+      <ProjectCard
+        title="Private 5G 네트워크 설계 및 구축"
+        role="Network Engineer @ Ubiquoss"
+        period="2023.02 – 2024.04"
+        stack={['L2/L3 Switching', '5G RAN/Core', 'SNMP', 'TCP/IP']}
+        summary="NAVER 1784, POSCO DX Private 5G 네트워크 아키텍처. 한국 / 일본 / 미국 멀티 리전 지원."
+        href="/projects/ubiquoss"
+      />
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <h2 class="text-xl font-semibold mb-4">일을 대하는 방식</h2>
+    <p class="text-base max-w-2xl mb-4">
+      가장 가치 있는 자동화는 가장 복잡한 것이 아니라 가장 많은 인지 부하를 덜어내는 것이다.
+      AI-native 시스템 구축의 어려운 부분은 도구를 추가하는 것이 아니라, 무언가 잘못됐을 때
+      에이전트가 어떻게 행동해야 하는지를 코드화하는 것에 있다.
+    </p>
+    <p class="text-base max-w-2xl">
+      <a href="/ko/codification">회고 글 읽기 →</a>
+    </p>
+  </section>
+</BaseLayout>

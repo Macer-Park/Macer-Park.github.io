@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  role: string;
+  period: string;
+  stack: string[];
+  summary: string;
+  href: string;
+  highlight?: boolean;
+}
+
+const { title, role, period, stack, summary, href, highlight = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class="card block"
+  style={highlight
+    ? 'border-color: var(--accent); border-width: 2px;'
+    : ''}
+>
+  <div class="flex items-baseline justify-between gap-3 mb-2">
+    <h3 class="text-lg font-semibold m-0">{title}</h3>
+    <span class="text-xs" style="color: var(--fg-soft);">{period}</span>
+  </div>
+  <div class="text-sm mb-3" style="color: var(--fg-soft);">{role}</div>
+  <p class="text-sm mb-4" style="color: var(--fg);">{summary}</p>
+  <div>
+    {stack.map((s) => <span class="pill">{s}</span>)}
+  </div>
+</a>

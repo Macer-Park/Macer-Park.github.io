@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = '한 달의 코드화';
+const description =
+  'sanctuary가 가르쳐 준 네 가지 — 위기, 시스템화, 확장, 재발 방지의 회고.';
+---
+
+<BaseLayout
+  lang="ko"
+  title={title}
+  description={description}
+  pathname="/ko/codification"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        회고 · 2026년 4월
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        한 달의 코드화 — sanctuary가 가르쳐 준 네 가지
+      </h1>
+      <p class="text-base" style="color: var(--fg-soft);">
+        2026-04-07 ~ 2026-05-06, 한 달간 sanctuary를 만들면서 배운 것의 회고. 변곡점 4개를 시간
+        역순(위기 → 시스템화 → 확장 → 재발 방지)이 아니라 코드화의 깊이 순으로 정렬했다.
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. 위기</h2>
+      <p class="mb-4">
+        2026-04-24, 동료 한 명이 메시지를 보내왔다. <em
+          >"could you let me know why we cancelled the orders... did the merchant ask us to?"</em
+        > — 머리가 하얘졌다. 그날 Bulk Action 한 번이 10건의 주문을 의도치 않은 Cancel 상태로
+        전환시킨 것을, 그 메시지로 처음 인지했다.
+      </p>
+      <p class="mb-4">
+        시니어에게 곧바로 상황을 설명하고 워크어라운드를 청했다. 그가 가이드한 한 줄은 명료했다 —
+        머천트에게는 "Technical Glitch" 톤으로 양해를 구하고 재발 방지를 약속하라, 내부에서는
+        무엇이 어떻게 일어났는지 있는 그대로 공유하라. 외부용 어휘와 내부용 사실을 분리하는 것이
+        거짓이 아니라 정중함이라는 걸, 그날 처음 받아들였다.
+      </p>
+      <p>
+        사고 직후 바로 코드화에 들어갔다. RULE-118 hook + 비가역 status ID 블록 리스트 + DB enum
+        정렬 + <code>verify_safety.sh</code> 13/13 게이트. 동시에 깨달은 것 하나 — 비가역 도구는
+        가능하면 내가 직접 다루기로 했다. 사용 빈도가 낮고, 직접 다루다 보니 익숙해지고 자신감이
+        붙었다. 무작정 AI에게 맡기는 게 정답이 아니라는 걸, 가장 비싸게 배운 날이다.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. 시스템화</h2>
+      <p class="mb-4">
+        3일 후, <code>check_response</code>가 PASS를 반환한 회신 초안에서 내부용어가 그대로 외부에
+        새는 사례를 발견했다. 기능 사용 전후가 별 차이가 없었다. <code>note_type</code> 파라미터의
+        alias가 정규화되지 않아 검사 자체가 silent skip되고 있었다. 입력값이 schema와 다르면 그냥
+        통과시키는 false positive.
+      </p>
+      <p class="mb-4">
+        처음에는 도구를 의심했다. 그러나 곱씹어 보면 결국 자기 검증 부재의 합리화였다. 내가
+        의도해서 만든 기능을 내가 더 들여다보지도 않은 채, AI가 내 의도대로 완벽하게 사용해 주기를
+        바라는 건 책임을 떠넘기는 비겁한 행동이었다. SPEC 2026-05-04로 입력 정규화 + alias
+        whitelist + mixed-language pattern을 게이트로 묶었다.
+      </p>
+      <p>
+        추적 본능은 불안감에서 나온다. 도구를 신뢰한다는 말이 본인 검증의 면제가 되어선 안 된다는
+        것 — 두 번째 코드화의 이유였다.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">3. 확장</h2>
+      <p class="mb-4">
+        거슬러 올라가면 2026-04-07. 도구가 늘어날수록 매 호출의 결과가 컨텍스트를 무겁게 만들고,
+        큰 결과가 큰 사고 품질을 보장하지 않는다는 걸 일찍 인지했다. AI 도구가 "실사용 검증을
+        짚고 넘어가지 않는다"는 의심도 이때부터 쌓였다.
+      </p>
+      <p class="mb-4">
+        해법은 양을 줄이는 것이 아니라 형태를 바꾸는 것이었다. 매번 같은 흐름으로 같은 데이터를
+        부르는 조사 패턴을 composite 도구(<code>price_verify</code>, <code>payment_forensics</code
+        >, <code>shipping_diagnostics</code>)로 규격화 — 5~8개 쿼리 + 외부 채널(Coralogix, CI XML) +
+        auto discrepancy detection을 한 번 호출에 묶었다. 일관된 데이터 형식을 얻는 대가로 raw
+        조사 때의 다양성 일부를 포기한다는 것을 인지하면서 만들었다.
+      </p>
+      <p>
+        비워낼 용기. 도구를 늘리는 것이 능력이라면, 비우는 것은 용기다. sanctuary가 7개 서비스에서
+        1개 TypeScript 서버로 합쳐진 것도 같은 결의 결정이었다.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">4. 재발 방지</h2>
+      <p class="mb-4">
+        2026-04-29, 두 티켓이 같은 증상을 들고 왔다. "이전 fix는 fix가 아니었다." 그제야 보였다 —
+        더블체크의 기준을 명확히 정의하지 않은 채 그 기준을 AI에게 전담시켰던 오판이 누적된
+        결과였다. 임시 처치가 영구 처치로 둔갑한 자리.
+      </p>
+      <p class="mb-4">
+        A부터 Z까지 다시 조사했다. 이번엔 단발 티켓 처리가 아니라 JIRA permanent fix 티켓으로
+        전환했다. 같은 시기 Snowflake 장기 archive 통합도 이루어졌다 — MSSQL 90일 retention 너머에서
+        "왜 또 발생했는가"를 추적하려면 archive가 필요했다. 우연이 아니다.
+      </p>
+      <p>
+        끝까지 가는 동력은 KPI가 아니다. 한 번 시작하면 "내 것"으로 만들지 않고서는 답답한 성격,
+        그리고 체화한 것을 동료에게 공유함으로써 비로소 조직이 성장한다는 믿음. 그래서 모든
+        도구의 동작을 내가 완전해석할 수 있어야 코드화도 의미를 갖는다.
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">꺼진 불씨도 다시 보자.</blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      작성일 2026-05-06 · 영문 번역: <a href="/codification">English</a>
+    </footer>
+  </article>
+</BaseLayout>

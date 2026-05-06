@@ -1,0 +1,25 @@
+---
+import { SITE_TITLE, NAV } from '../consts';
+
+interface Props {
+  lang: 'en' | 'ko';
+}
+
+const { lang } = Astro.props;
+const items = NAV[lang];
+const homeHref = lang === 'ko' ? '/ko/' : '/';
+const langSwitchLabel = lang === 'en' ? '한국어' : 'English';
+const langSwitchHref = lang === 'en' ? '/ko/' : '/';
+---
+
+<header class="border-b" style="border-color: var(--border);">
+  <div class="container-wide flex items-center justify-between py-5">
+    <a href={homeHref} class="text-base font-semibold tracking-tight" style="border-bottom: none;">
+      {SITE_TITLE}
+    </a>
+    <nav class="flex items-center gap-6 text-sm" style="color: var(--fg-soft);">
+      {items.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href={langSwitchHref} aria-label="Language switch">{langSwitchLabel}</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="en"
+  title="Security Solution Provisioning — Toss Insurance"
+  description="Slack Bot self-service automation for security solution provisioning."
+  pathname="/projects/toss"
+>
+  <article class="container-prose pt-20 pb-16">
+    <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+      Project 3 · Jan 2025 – May 2025
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+      Security Solution Provisioning Automation
+    </h1>
+    <p class="text-base mb-8" style="color: var(--fg-soft);">
+      IT Supporter @ Toss Insurance · Python, Slack Bot API, Microsoft 365 Admin
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Problem</h2>
+    <p>
+      Toss Insurance's IT team handled a high volume of repetitive help desk requests for
+      security solution provisioning — granting access, configuring endpoint protection, managing
+      user lifecycle across multiple security platforms. Each request required manual steps
+      across several admin consoles.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Solution</h2>
+    <p class="mb-4">A Python-based automation system integrated with Slack Bot:</p>
+    <ol class="list-decimal list-inside" style="color: var(--fg-soft);">
+      <li>Receives provisioning requests through a Slack interface</li>
+      <li>Automatically provisions users across security solution platforms</li>
+      <li>Confirms completion back to the requester via Slack</li>
+    </ol>
+    <p class="mt-4">
+      Additional supporting work included Windows / macOS support, Microsoft 365 user lifecycle
+      and licensing, Google Workspace 2FA exception management, IP exhaustion / subnet
+      diagnostics, malware detection accuracy validation, and Hypervisor-based isolated
+      environments for public-institution software conflicts.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">Results</h2>
+    <ul class="list-disc list-inside" style="color: var(--fg-soft);">
+      <li><strong>70% reduction</strong> in help desk inquiries</li>
+      <li>Provisioning time: manual multi-step → automated single trigger</li>
+      <li>Error rate: human-dependent → near zero (scripted)</li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">What I Learned</h2>
+    <p>
+      The biggest impact came not from the automation itself, but from the Slack Bot interface.
+      By making the system self-service, users stopped filing help desk tickets entirely. The
+      lesson: <strong
+        >the best automation is the one users don't even think of as automation.</strong
+      >
+    </p>
+
+    <p class="mt-8 text-sm">
+      Source:
+      <a
+        href="https://github.com/Macer-Park/IT-Support-Diagnostic-Tools"
+        target="_blank"
+        rel="noopener"
+      >
+        github.com/Macer-Park/IT-Support-Diagnostic-Tools
+      </a>
+    </p>
+  </article>
+</BaseLayout>

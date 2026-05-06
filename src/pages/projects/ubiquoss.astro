@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="en"
+  title="Private 5G Networks — Ubiquoss"
+  description="Network architecture design and on-site deployment for enterprise Private 5G."
+  pathname="/projects/ubiquoss"
+>
+  <article class="container-prose pt-20 pb-16">
+    <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+      Project 4 · Feb 2023 – Apr 2024
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+      Private 5G Network Design and Deployment
+    </h1>
+    <p class="text-base mb-8" style="color: var(--fg-soft);">
+      Network Engineer @ Ubiquoss · L2/L3 Switching, 5G RAN/Core, SNMP/Syslog monitoring
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Problem</h2>
+    <p>
+      Enterprise clients (NAVER 1784 headquarters, POSCO DX facilities) needed Private 5G
+      networks for internal operations — low-latency connectivity for IoT sensors, autonomous
+      logistics, and high-bandwidth applications within their premises.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Solution</h2>
+    <ol class="list-decimal list-inside" style="color: var(--fg-soft);">
+      <li>
+        <strong>Network topology design</strong> — redundant paths, failover mechanisms, and traffic
+        segmentation for 5G core and RAN components
+      </li>
+      <li>
+        <strong>Simulation environments</strong> — lab environments replicating production
+        topology for pre-deployment validation
+      </li>
+      <li>
+        <strong>Monitoring infrastructure</strong> — SNMP/Syslog-based monitoring with proactive
+        fault detection alerting
+      </li>
+      <li>
+        <strong>Multi-region support</strong> — real-time technical support across Korea, Japan,
+        and the United States
+      </li>
+    </ol>
+    <p class="mt-4">
+      Additional work included CIDR-based subnetting for department/floor segmentation, L4 load
+      balancing, ultra-low-latency tuning, L3 switch OS validation, and SOPs for recurring
+      issues.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">Key Deployments</h2>
+    <ul class="list-disc list-inside" style="color: var(--fg-soft);">
+      <li>
+        <strong>NAVER 1784</strong> — Private 5G network for NAVER's headquarters building,
+        supporting internal logistics and IoT infrastructure
+      </li>
+      <li><strong>POSCO DX</strong> — Industrial Private 5G for smart factory operations</li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">What I Learned</h2>
+    <p>
+      Working on physical network infrastructure taught me the importance of redundancy thinking
+      — every single point of failure will eventually fail. This mindset directly influenced how
+      I later designed software systems: always have a fallback, always have monitoring, always
+      have a recovery path.
+    </p>
+  </article>
+</BaseLayout>

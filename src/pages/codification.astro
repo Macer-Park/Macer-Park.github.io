@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'How I codify mistakes';
+const description =
+  'A retrospective on four inflection points from a single month — crisis, system critique, expansion, and prevention.';
+---
+
+<BaseLayout
+  lang="en"
+  title={title}
+  description={description}
+  pathname="/codification"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        Retrospective · April 2026
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        How I codify mistakes
+      </h1>
+      <p class="text-base" style="color: var(--fg-soft);">
+        A month of building sanctuary, told through four inflection points — ordered not by time
+        but by the depth of codification each one produced.
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. The Crisis</h2>
+      <p class="mb-4">
+        April 24, 2026. A colleague sent a message: <em
+          >"could you let me know why we cancelled the orders... did the merchant ask us to?"</em
+        > — my mind went blank. A single Bulk Action that day had unintentionally transitioned 10 orders
+        into Cancel status, and that message was how I first realized it.
+      </p>
+      <p class="mb-4">
+        I went straight to a senior engineer, explained the situation, and asked for a workaround.
+        His guidance was clear — toward the merchant, frame it with a "technical glitch" tone,
+        apologize, and commit to prevention; internally, share exactly what happened, in raw
+        detail. That day I accepted, for the first time, that separating external phrasing from
+        internal facts is not deception — it is courtesy.
+      </p>
+      <p>
+        Codification began immediately. RULE-118 hook + an irreversible status-ID block list + DB
+        enum alignment + a 13-of-13 <code>verify_safety.sh</code> gate. And one thing I came to
+        understand alongside it: irreversible operations, where I can, I now run myself. Their
+        actual call frequency is low, and operating them by hand has built familiarity and
+        confidence. The lesson was the most expensive one — handing everything to AI by default is
+        not the answer.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. The System Critique</h2>
+      <p class="mb-4">
+        Three days later, I caught a draft response that had passed <code>check_response</code>,
+        yet leaked internal-only terminology to an external recipient. The tool's behavior before
+        and after the check was indistinguishable. The <code>note_type</code> parameter's aliases were
+        not being normalized, so the validation itself was silently skipped — a false positive that
+        let any input diverging from the schema slip through.
+      </p>
+      <p class="mb-4">
+        My first reaction was to suspect the tool. But on reflection, that was a rationalization
+        for my own missing verification. I had built the feature myself, with my own intent.
+        Expecting AI to use it perfectly to that intent, without my looking deeper into it, was an
+        evasion of responsibility. SPEC 2026-05-04 codified the fix: input normalization + alias
+        whitelist + mixed-language pattern detection, all wired as gates.
+      </p>
+      <p>
+        The instinct to trace comes from unease. Trusting a tool can never become an exemption
+        from your own verification — that was the reason for the second codification.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">3. The Expansion</h2>
+      <p class="mb-4">
+        Going further back, to April 7. I noticed early that the more tools I built, the heavier
+        each call's payload made the context, and that more data does not guarantee better
+        thinking. The suspicion that AI tools "do not always pause for real-world verification" was
+        already accumulating then.
+      </p>
+      <p class="mb-4">
+        The fix was not to reduce volume but to reshape it. Investigation patterns that called the
+        same data in the same order every time were standardized into composite tools (<code
+          >price_verify</code
+        >, <code>payment_forensics</code>, <code>shipping_diagnostics</code>) — five to eight
+        queries plus external channels (Coralogix, CI XML) plus auto discrepancy detection,
+        bundled into a single call. I knew the trade-off going in: a consistent data shape comes
+        at the cost of some of the variety raw exploration would surface.
+      </p>
+      <p>
+        The courage to subtract. If adding tools is competence, removing them is courage.
+        sanctuary's collapse from seven services into one TypeScript server came from the same
+        kind of decision.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">4. Preventing Recurrence</h2>
+      <p class="mb-4">
+        April 29. Two tickets arrived with the same symptom. <em
+          >"The previous fix wasn't a fix."</em
+        > That was when I saw it — I had failed to define the bar for "double-check," then handed
+        that undefined bar to AI, and the misjudgment had compounded. The exact spot where a
+        temporary patch had quietly been mistaken for a permanent one.
+      </p>
+      <p class="mb-4">
+        I investigated end-to-end again. This time, instead of closing as another single-ticket
+        repair, I converted it into a JIRA permanent-fix ticket. The Snowflake long-term archive
+        integration landed around the same time — chasing "why did this recur" beyond MSSQL's
+        90-day retention required archive access. Not a coincidence.
+      </p>
+      <p>
+        The drive to see something through is not KPI. It is a temperament — once started, I
+        cannot rest until something is "mine," and a belief that only what I have internalized can
+        be passed to a colleague, and only through that does a team grow. Which is also why every
+        tool's behavior has to be something I can fully interpret myself; codification only carries
+        weight when the underlying mechanism is understood.
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">
+      "Even when the fire is out, watch the embers."
+    </blockquote>
+    <p class="text-sm mb-12" style="color: var(--fg-soft);">
+      Korean proverb — <span lang="ko">꺼진 불씨도 다시 보자.</span>
+    </p>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      Written 2026-05-06 · Korean original: <a href="/ko/codification">한국어 원본</a>
+    </footer>
+  </article>
+</BaseLayout>

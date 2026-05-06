@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MetricBadge from '../../components/MetricBadge.astro';
+---
+
+<BaseLayout
+  lang="en"
+  title="sanctuary — Global-e"
+  description="A unified MCP server consolidating cross-border e-commerce support investigation into a single AI-native interface."
+  pathname="/projects/global-e"
+>
+  <article class="container-prose pt-20 pb-16">
+    <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+      Project 1 · Dec 2025 – Present
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+      sanctuary — Cross-Border E-Commerce Support Automation
+    </h1>
+    <p class="text-base mb-8" style="color: var(--fg-soft);">
+      Technical Support Engineer @ Global-e · TypeScript, MCP, MSSQL, Snowflake, Coralogix,
+      Playwright
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Problem</h2>
+    <p class="mb-4">
+      Global-e operates a cross-border e-commerce platform. Technical support requires
+      investigating across 10+ disconnected systems: admin portal, payment gateways (Adyen,
+      Stripe, Klarna, PayPal, Worldpay), MSSQL/Snowflake databases, observability, JIRA/
+      Confluence, Zendesk, email logs, and merchant Shopify stores.
+    </p>
+    <p>
+      A single ticket investigation took <strong>2+ hours</strong> and relied on tribal knowledge
+      that was difficult to transfer.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Solution</h2>
+    <p class="mb-4">
+      I built <strong>sanctuary</strong>, a unified MCP server that consolidates the entire
+      support investigation lifecycle into a single AI-native interface. I started with a
+      multi-service architecture in Python and Go, then rebuilt the platform as a single
+      TypeScript MCP server — reducing operational overhead while expanding capability.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">Key Features</h2>
+
+    <h3 class="text-base font-semibold mt-6 mb-2">Unified Order Investigation</h3>
+    <p class="mb-4">
+      A single composite tool pulls the complete picture in under a minute: DB joins across 6
+      pricing fields, payment transaction history, delivery timeline, refund chain, merchant
+      configuration, and commercial invoice (CI) rendering — with automatic discrepancy
+      detection.
+    </p>
+
+    <h3 class="text-base font-semibold mt-6 mb-2">Multi-PSP Payment Diagnostics</h3>
+    <p class="mb-4">
+      Automated investigation across Adyen, Stripe, Klarna, PayPal, and Worldpay. The platform
+      normalizes different APIs, authentication methods, and data formats into a consistent
+      diagnostic view, including a 444M-row Snowflake archive for long-term payment history
+      beyond MSSQL retention.
+    </p>
+
+    <h3 class="text-base font-semibold mt-6 mb-2">Investigation Thoroughness — 5 Stages of Self-Measurement</h3>
+    <p class="mb-4">
+      I designed a 5-stage framework that measures my own investigation quality. The system
+      tracks false-positive rates, root-cause discovery frequency, and resolution-direction
+      recall — with data-driven gates between stages. STAGE 1–3 deployed; STAGE 4 in active
+      measurement window.
+    </p>
+
+    <h3 class="text-base font-semibold mt-6 mb-2">Response Quality Assurance via Codified Rules</h3>
+    <p class="mb-4">
+      Before any customer-facing response is sent, an automated checker validates against
+      <strong>203 feedback memory files</strong> — of which <strong
+        >106 are codified into machine-checked YAML gates</strong
+      > that block the violation at the tool boundary. Coverage spans prohibited terminology,
+      escalation path correctness, factual accuracy, and tone calibration per recipient.
+    </p>
+
+    <h3 class="text-base font-semibold mt-6 mb-2">Behavioral Codification — From Mistake to Rule to Hook</h3>
+    <p class="mb-4">
+      When a mistake recurs, the system codifies it: write a feedback memory → add a YAML gate
+      → install a pre-tool-use hook → block the failure mode at the tool boundary. This brought
+      100+ recurring error categories down to near-zero recurrence in production.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-6">Results</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
+      <MetricBadge num="60s" label="Investigation per case (was 2hr+)" />
+      <MetricBadge num="379" label="MCP tools" />
+      <MetricBadge num="15,943" label="Cached tickets" />
+      <MetricBadge num="203" label="Memory files (106 YAML gates)" />
+    </div>
+    <ul class="list-disc list-inside mb-4" style="color: var(--fg-soft);">
+      <li>5 PSPs unified into single diagnostic view</li>
+      <li>7 services across K8s + Docker → 1 unified TypeScript server</li>
+      <li>Investigation quality measurement: none → 5-stage framework with quantified gates</li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">What I Learned</h2>
+    <p class="mb-4">
+      <strong>Consolidation beats orchestration.</strong> The earlier 7-service architecture was
+      technically more impressive; the later one ships faster, debugs easier, and costs less to
+      operate. The highest-value automation isn't the most complex — it's the one that removes
+      the most cognitive load.
+    </p>
+    <p class="mb-4">
+      <strong>AI agents need codified behavior, not just tools.</strong> Giving an AI agent 379
+      tools is half the work. The other half is codifying <em>how</em> it should behave — what to
+      verify before concluding, what to never assert without evidence, when to ask the user
+      instead of guessing.
+    </p>
+    <p>
+      <strong>Measure your own engineering, not just the system.</strong> The Investigation
+      Thoroughness framework treats my own investigation quality as a measurable artifact. Most
+      engineers don't instrument themselves. The gap between "I think I'm thorough" and "I am
+      measurably thorough" is the gap most worth closing.
+    </p>
+
+    <p class="mt-12">
+      <a href="/codification">Read the retrospective →</a>
+    </p>
+  </article>
+</BaseLayout>

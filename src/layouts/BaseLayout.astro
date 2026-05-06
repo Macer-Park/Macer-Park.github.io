@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'en' | 'ko';
+  pathname?: string;
+}
+
+const { title, description, lang = 'en', pathname = '/' } = Astro.props;
+
+const fullTitle = title ? `${title} — ${SITE_TITLE}` : SITE_TITLE;
+const desc = description ?? SITE_DESCRIPTION;
+const canonical = new URL(pathname, SITE_URL).toString();
+
+const altLang = lang === 'en' ? 'ko' : 'en';
+const altPath =
+  lang === 'en'
+    ? `/ko${pathname === '/' ? '/' : pathname}`
+    : pathname.replace(/^\/ko/, '') || '/';
+const altUrl = new URL(altPath, SITE_URL).toString();
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: AUTHOR.name,
+  alternateName: AUTHOR.koreanName,
+  jobTitle: AUTHOR.role,
+  worksFor: { '@type': 'Organization', name: AUTHOR.company },
+  address: { '@type': 'PostalAddress', addressLocality: 'Seoul', addressCountry: 'KR' },
+  email: AUTHOR.email,
+  url: SITE_URL,
+  sameAs: [AUTHOR.linkedin, AUTHOR.github],
+  knowsLanguage: ['ko', 'en', 'ja'],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={altLang} href={altUrl} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', SITE_URL).toString()} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'ko' ? 'ko_KR' : 'en_US'} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={desc} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </head>
+  <body>
+    <Header lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

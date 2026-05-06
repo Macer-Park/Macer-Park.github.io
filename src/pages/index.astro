@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MetricBadge from '../components/MetricBadge.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { AUTHOR, TAGLINE } from '../consts';
+---
+
+<BaseLayout lang="en" pathname="/">
+  <section class="container-wide pt-20 pb-16">
+    <div class="text-sm mb-3" style="color: var(--fg-soft);">
+      {AUTHOR.role} · {AUTHOR.location}
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-6" style="line-height: 1.2;">
+      {TAGLINE.en.headline}
+    </h1>
+    <p class="text-base sm:text-lg max-w-2xl mb-12" style="color: var(--fg-soft);">
+      {TAGLINE.en.sub}
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl">
+      <MetricBadge num="60s" label="Investigation per case" />
+      <MetricBadge num="379" label="MCP tools" />
+      <MetricBadge num="15,943" label="Cached tickets" />
+      <MetricBadge num="1" label="Unified server" />
+    </div>
+  </section>
+
+  <section id="projects" class="container-wide py-12">
+    <h2 class="text-xl font-semibold mb-2">Projects</h2>
+    <p class="text-sm mb-8" style="color: var(--fg-soft);">
+      Four companies, four classes of problem — each solved by building the missing automation layer.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ProjectCard
+        title="sanctuary — Cross-Border E-Commerce Support Automation"
+        role="Technical Support Engineer @ Global-e"
+        period="Dec 2025 – Present"
+        stack={['TypeScript', 'MCP', 'MSSQL', 'Snowflake', 'Coralogix', 'Playwright']}
+        summary="Unified MCP server consolidating 10+ disconnected systems into a single AI-native investigation interface. 379 tools, 15,943 cached tickets, 203 codified behavioral rules."
+        href="/projects/global-e"
+        highlight={true}
+      />
+      <ProjectCard
+        title="GPU VDI Benchmark Automation"
+        role="VMware Engineer @ PuzzleSystems"
+        period="Jun 2025 – Nov 2025"
+        stack={['Python', 'PyTorch', 'TensorFlow', 'VMware vSphere']}
+        summary="Automated GPU benchmarking pipeline for SK E&S virtualized vGPU validation. Cycle time: days → overnight."
+        href="/projects/puzzle"
+      />
+      <ProjectCard
+        title="Security Solution Provisioning Automation"
+        role="IT Supporter @ Toss Insurance"
+        period="Jan 2025 – May 2025"
+        stack={['Python', 'Slack Bot API', 'Microsoft 365']}
+        summary="Slack Bot self-service provisioning across security platforms. Help desk inquiries reduced 70%."
+        href="/projects/toss"
+      />
+      <ProjectCard
+        title="Private 5G Network Design and Deployment"
+        role="Network Engineer @ Ubiquoss"
+        period="Feb 2023 – Apr 2024"
+        stack={['L2/L3 Switching', '5G RAN/Core', 'SNMP', 'TCP/IP']}
+        summary="Led network architecture for NAVER 1784 and POSCO DX Private 5G. Korea / Japan / U.S. multi-region."
+        href="/projects/ubiquoss"
+      />
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <h2 class="text-xl font-semibold mb-4">How I think about this work</h2>
+    <p class="text-base max-w-2xl mb-4" style="color: var(--fg);">
+      The most valuable automation is the one that removes the most cognitive load — not the most
+      complex one. The hardest part of building AI-native systems isn't adding more tools; it's
+      codifying how the agent should behave when something goes wrong.
+    </p>
+    <p class="text-base max-w-2xl">
+      <a href="/codification">Read the retrospective →</a>
+    </p>
+  </section>
+</BaseLayout>

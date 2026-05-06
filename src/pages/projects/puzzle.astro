@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="en"
+  title="GPU VDI Benchmark — PuzzleSystems"
+  description="Automated GPU benchmarking pipeline for VMware vGPU validation."
+  pathname="/projects/puzzle"
+>
+  <article class="container-prose pt-20 pb-16">
+    <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+      Project 2 · Jun 2025 – Nov 2025
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+      GPU VDI Benchmark Automation
+    </h1>
+    <p class="text-base mb-8" style="color: var(--fg-soft);">
+      VMware Engineer @ PuzzleSystems · Python, PyTorch, TensorFlow, VMware vSphere, PowerShell
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Problem</h2>
+    <p>
+      A client (SK E&amp;S) needed to validate the performance of VMware's virtualized GPU
+      (vGPU) environment before launching a subscription-based GPU rental service. The key
+      questions: how does GPU performance degrade under concurrent VM workloads? What is the
+      maximum number of VDI sessions that can run GPU-intensive tasks simultaneously? How do
+      resource utilization patterns change over extended stress periods? Manual benchmarking was
+      time-consuming and produced inconsistent results.
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">The Solution</h2>
+    <p class="mb-4">I built an automated GPU benchmarking pipeline:</p>
+    <ol class="list-decimal list-inside" style="color: var(--fg-soft);">
+      <li>
+        <strong>Stress-test scripts</strong> using PyTorch and TensorFlow that simulate realistic
+        GPU workloads (matrix operations, model training, inference) inside VMware vGPU
+        environments
+      </li>
+      <li>
+        <strong>Automated data collection</strong> capturing GPU utilization, memory, temperature,
+        and throughput at configurable intervals
+      </li>
+      <li>
+        <strong>Statistical analysis and reporting</strong> that processes accumulated data and
+        generates incremental reports with trend analysis
+      </li>
+    </ol>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">Results</h2>
+    <ul class="list-disc list-inside" style="color: var(--fg-soft);">
+      <li>Provided quantitative data that enabled SK E&amp;S to launch their GPU rental service</li>
+      <li>
+        Reduced benchmark cycle time from days of manual testing to automated overnight runs
+      </li>
+      <li>Delivered reproducible results across different vGPU configurations</li>
+    </ul>
+
+    <p class="mt-8 text-sm">
+      Source:
+      <a href="https://github.com/Macer-Park/VDI-CUDA-BENCH" target="_blank" rel="noopener"
+        >github.com/Macer-Park/VDI-CUDA-BENCH</a
+      >
+    </p>
+  </article>
+</BaseLayout>

@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Verification at the boundary';
+const description =
+  'Two inflection points on what it means to verify everything that leaves the system — merchant replies and AI-cited sources.';
+---
+
+<BaseLayout
+  lang="en"
+  title={title}
+  description={description}
+  pathname="/codification-2"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        Retrospective · Essay #2 · April–May 2026
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        Verification at the boundary — everything that leaves the system
+      </h1>
+      <p class="text-base mb-4" style="color: var(--fg-soft);">
+        If <a href="/codification">essay #1</a> was about how I learn to trust the system from
+        within, this is about how I verify what leaves it. Two inflection points, one thesis.
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. So What?</h2>
+      <p class="mb-4">
+        At some point, a single phrase started showing up while I read my own draft replies. <strong
+          >"So What?"</strong
+        >
+      </p>
+      <p class="mb-4">
+        Put the merchant in the seat: what do they actually do next, after reading this? The
+        reply is technically accurate, but there is no action. I diagnosed the cause; the
+        merchant has nothing to start. That is the kind of reply that triggers <em>So What?</em>
+      </p>
+      <p class="mb-4">
+        There is an abstract phrase, <em>"speak the recipient's domain language."</em> Stripped
+        down, it just means: meet the merchant at their eye level. That is where I leaned in.
+        Add one line at the end — <em>"You're in this situation, and the next step is X."</em>
+        I watched that one line change the weight of the whole reply.
+      </p>
+      <p>
+        The thinking didn't stop at merchant replies. Ops side conversations, JIRA escalations,
+        manager handoffs — the further the recipient is from your own domain, the more precise
+        this calibration has to be. The <code>check_response</code> tone-calibration rule,
+        which checks the vocabulary and structure of a draft against who is receiving it, came
+        out of the same instinct.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. Naboo is the start, not the conclusion</h2>
+      <p class="mb-4">
+        May 2, 2026. On top of a Naboo (an internal RAG assistant) summary, I had a second LLM
+        (ollama) lined up to summarize it once more.
+      </p>
+      <p class="mb-4">
+        The moment I looked at the setup, the answer was obvious. <strong
+          >Naboo is a tool that announces the beginning of an investigation.</strong
+        > It searches everything we've stored and hands back a rough handful — and from there, the
+        actual job is to open JIRA, Confluence, source URLs through MCP, fetch each one, and
+        verify authenticity by hand. That fetch loop was already the most optimized flow.
+        Re-summarizing the summary with ollama wasn't reinforcing the conclusion; it was
+        manufacturing a synthesized falsehood.
+      </p>
+      <p>
+        This admission came after a string of attempts. What I learned by giving up one
+        ineffective idea was that every tool has its own seat — Naboo at the entry, MCP fetch in
+        the verification, citations always from the original source. I codified this as <code
+          >gate_source_fetch.sh</code
+        >: before the response phase begins, if any JIRA / Confluence / URL cited by Naboo
+        hasn't been fetched in body, the hook blocks the workflow.
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">
+      Everything that leaves the system is responsible for the next action of the person
+      receiving it.
+    </blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      Written 2026-05-06 · Korean original: <a href="/ko/codification-2">한국어 원본</a> · Previous:
+      <a href="/codification">Essay #1 — How I codify mistakes</a>
+    </footer>
+  </article>
+</BaseLayout>

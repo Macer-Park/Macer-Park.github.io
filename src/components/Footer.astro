@@ -7,9 +7,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const builtLine =
-  lang === 'ko'
-    ? 'Astro + Tailwind으로 직접 작성. 콘텐츠는 마크다운에서 마이그레이션.'
-    : 'Built with Astro + Tailwind. Content sourced from markdown.';
+  lang === 'ko' ? 'Astro + Tailwind으로 직접 작성.' : 'Built with Astro + Tailwind.';
 const copyrightYear = new Date().getFullYear();
 ---
 

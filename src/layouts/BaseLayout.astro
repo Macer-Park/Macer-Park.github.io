@@ -13,7 +13,8 @@ interface Props {
 
 const { title, description, lang = 'en', pathname = '/' } = Astro.props;
 
-const fullTitle = title ? `${title} — ${SITE_TITLE}` : SITE_TITLE;
+const baseTitle = `${SITE_TITLE} · ${AUTHOR.role}`;
+const fullTitle = title ? `${title} — ${SITE_TITLE}` : baseTitle;
 const desc = description ?? SITE_DESCRIPTION;
 const canonical = new URL(pathname, SITE_URL).toString();
 
@@ -57,10 +58,14 @@ const personSchema = {
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={lang === 'ko' ? 'ko_KR' : 'en_US'} />
+    <meta property="og:image" content={new URL('/og.svg', SITE_URL).toString()} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={desc} />
+    <meta name="twitter:image" content={new URL('/og.svg', SITE_URL).toString()} />
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>

@@ -51,22 +51,22 @@ const description =
     </section>
 
     <section class="mb-10">
-      <h2 class="text-xl font-semibold mb-4">2. Naboo는 시작이지 결론이 아니다</h2>
+      <h2 class="text-xl font-semibold mb-4">2. 검색 어시스턴트는 시작이지 결론이 아니다</h2>
       <p class="mb-4">
-        2026-05-02. Naboo(사내 RAG 어시스턴트)가 만든 검색 결과 요약 위에, 또 다른 LLM(ollama)을
+        2026-05-02. 사내 RAG 기반 검색 어시스턴트가 만든 검색 결과 요약 위에, 또 다른 LLM(ollama)을
         얹어 한 번 더 요약하려는 시도가 내 손에 있었다.
       </p>
       <p class="mb-4">
-        곰곰이 보니 답은 명료했다. <strong>Naboo는 조사의 시작을 알리는 도구</strong>다. 지난
-        모든 데이터를 서치해서 한 움큼 쥐어주면, 거기서부터 JIRA와 Confluence MCP로 하나씩 전부
-        Fetch해 가면서 진위 여부를 파악하는 것 — 그게 이미 가장 최적화된 흐름이었다. ollama로 한
-        번 더 요약하는 건 합성된 거짓을 만드는 길이었지 결론을 강화하는 길이 아니었다.
+        곰곰이 보니 답은 명료했다. <strong>검색 어시스턴트는 조사의 시작을 알리는 도구</strong>다.
+        지난 모든 데이터를 서치해서 한 움큼 쥐어주면, 거기서부터 JIRA와 Confluence MCP로 하나씩
+        전부 Fetch해 가면서 진위 여부를 파악하는 것 — 그게 이미 가장 최적화된 흐름이었다. ollama로
+        한 번 더 요약하는 건 합성된 거짓을 만드는 길이었지 결론을 강화하는 길이 아니었다.
       </p>
       <p>
         여러 시도를 해본 끝의 인정이다. 하나의 효과 없는 아이디어를 포기하면서 알게 된 건, 도구마다
-        자기 자리가 있다는 것. Naboo는 출발점, MCP fetch는 검증, 결론 인용은 1차 출처에서. 이걸
-        <code>gate_source_fetch.sh</code> hook으로 코드화했다 — 회신 단계 진입 전에 Naboo가
-        인용한 JIRA / Confluence / URL이 본문 fetch까지 가지 않았으면 차단한다.
+        자기 자리가 있다는 것. 검색 어시스턴트는 출발점, MCP fetch는 검증, 결론 인용은 1차
+        출처에서. 이걸 <code>gate_source_fetch.sh</code> hook으로 코드화했다 — 회신 단계 진입 전에
+        어시스턴트가 인용한 JIRA / Confluence / URL이 본문 fetch까지 가지 않았으면 차단한다.
       </p>
     </section>
 

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MetricBadge from '../../components/MetricBadge.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { TAGLINE } from '../../consts';
+---
+
+<BaseLayout lang="ja" pathname="/ja/">
+  <section class="container-wide pt-20 pb-16">
+    <div class="text-sm mb-3" style="color: var(--fg-soft);">
+      Technical Support Engineer · ソウル
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-6" style="line-height: 1.2;">
+      {TAGLINE.ja.headline}
+    </h1>
+    <p class="text-base sm:text-lg max-w-2xl mb-12" style="color: var(--fg-soft);">
+      {TAGLINE.ja.sub}
+    </p>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl">
+      <MetricBadge num="60秒" label="案件あたり調査時間" />
+      <MetricBadge num="379" label="MCPツール" />
+      <MetricBadge num="15,943" label="キャッシュチケット" />
+      <MetricBadge num="1" label="1人チーム" />
+    </div>
+  </section>
+
+  <section id="projects" class="container-wide py-12">
+    <h2 class="text-xl font-semibold mb-2">プロジェクト</h2>
+    <p class="text-sm mb-8" style="color: var(--fg-soft);">
+      4社、4つの異なる課題 — それぞれ欠けていた自動化レイヤーを作って解決した事例。
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ProjectCard
+        title="sanctuary — クロスボーダーEコマース支援自動化"
+        role="Technical Support Engineer @ Global-e"
+        period="2025.12 – 現在"
+        stack={['TypeScript', 'MCP', 'MSSQL + Snowflake', 'Coralogix']}
+        summary="単一のMCPサーバーが10以上の分散システムをAIネイティブな調査インターフェースに統合。ツール379個、キャッシュチケット15,943件、機械強制の行動ゲート109個(文書化された学習216件のうち)。"
+        href="/projects/global-e"
+        highlight={true}
+      />
+      <ProjectCard
+        title="GPU VDIベンチマーク自動化"
+        role="VMware Engineer @ PuzzleSystems"
+        period="2025.06 – 2025.11"
+        stack={['Python', 'PyTorch', 'TensorFlow', 'VMware vSphere']}
+        summary="SK E&S 仮想vGPU環境検証の自動ベンチマークパイプライン。サイクルタイム:数日 → 夜間自動。"
+        href="/projects/puzzle"
+      />
+      <ProjectCard
+        title="セキュリティソリューションプロビジョニング自動化"
+        role="IT Supporter @ Toss Insurance"
+        period="2025.01 – 2025.05"
+        stack={['Python', 'Slack Bot API', 'Microsoft 365']}
+        summary="Slack Botによるセルフサービスプロビジョニング。ヘルプデスク問い合わせ70%削減。"
+        href="/projects/toss"
+      />
+      <ProjectCard
+        title="Private 5Gネットワーク設計・構築"
+        role="Network Engineer @ Ubiquoss"
+        period="2023.02 – 2024.04"
+        stack={['L2/L3 Switching', '5G RAN/Core', 'SNMP', 'TCP/IP']}
+        summary="NAVER 1784、POSCO DX Private 5Gネットワークアーキテクチャ。韓国 / 日本 / 米国マルチリージョン対応。"
+        href="/projects/ubiquoss"
+      />
+    </div>
+  </section>
+
+  <section class="container-wide py-12">
+    <h2 class="text-xl font-semibold mb-4">仕事への向き合い方</h2>
+    <p class="text-base max-w-2xl mb-4">
+      最も価値ある自動化は最も複雑なものではなく、最も多くの認知負荷を取り除くものだ。
+      AIネイティブシステム構築の難しさはツールを追加することではなく、何かが誤った時にエージェントがどう振る舞うべきかを体系化することにある。
+    </p>
+    <p class="text-base max-w-2xl">
+      <a href="/ja/codification">回顧録を読む →</a>
+    </p>
+  </section>
+
+  <section class="border-t mt-16 pt-6" style="border-color: var(--border);">
+    <p class="text-sm" style="color: var(--fg-soft);">
+      English: <a href="/">home</a> · 한국어: <a href="/ko/">홈</a>
+    </p>
+  </section>
+</BaseLayout>

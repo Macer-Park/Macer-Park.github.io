@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="ja"
+  title="プロフィール"
+  description="キャリアタイムライン、学歴、資格、言語。"
+  pathname="/ja/about"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-6" style="line-height: 1.2;">プロフィール</h1>
+      <blockquote class="text-lg mb-6">
+        「物理的な土台の上で論理的な知能を活かす。」
+      </blockquote>
+      <p style="color: var(--fg-soft);">
+        ハードウェアの深さとAI知能を橋渡しするインフラエンジニア。ネットワークインフラから始まり、エンドポイントとITサポート、VMware仮想化を経て、現在はクロスボーダーEコマース支援のためのAIネイティブな開発者ツールを作っている。3つの言語、4つの職務、1つの一貫した流れ — 表層下のレイヤーを担いながら、その上のレイヤーがきれいに動くようにすること。
+      </p>
+    </header>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-6">職歴</h2>
+
+      <div class="mb-8">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Global-e — Technical Support Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2025.12 – 現在
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          ソウル (ハイブリッド) · Application / SQL / Tech Support チーム
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>エンドツーエンドのマーチャント技術支援、ケースプールのオーナーシップと精密な問題分析</li>
+          <li>アプリケーションログ、SQL診断、デバッグツールによる root cause 分析</li>
+          <li>グローバルタイムゾーンを跨ぐクロスファンクショナルなエスカレーション調整</li>
+          <li>インパクト / 緊急度 / チーム間依存性を基準とした同時ケース管理</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/global-e">sanctuary プロジェクトを見る →</a></p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">PuzzleSystems — Technical Support Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2025.06 – 2025.11
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          ソウル永登浦 · Virtualization / VMware / Cloud Platform チーム
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>VMware環境の定期点検および脆弱性診断</li>
+          <li>NSXベースのネットワーク仮想化リモート / 現場技術支援</li>
+          <li>エンタープライズクライアント向け Windows 11 VDI マイグレーション展開</li>
+          <li>IDC ネットワーク安定性およびセキュリティ改善</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/puzzle">GPU VDIベンチマークプロジェクトを見る →</a></p>
+      </div>
+
+      <div class="mb-8">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Toss Insurance — Technical Support Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2025.01 – 2025.05
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          ソウル九老 · Internal System / Operation / System Platform チーム
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>Windows / macOS 環境支援、M365 ユーザーライフサイクルおよびライセンス管理</li>
+          <li>Wi-Fi に影響する IP 枯渇 / サブネット誤設定の診断</li>
+          <li>Google Workspace 2FA およびセキュリティアクセス例外管理</li>
+          <li>マルウェア検出精度の検証による false positive 削減</li>
+          <li>Python + Slack Bot によるセキュリティソリューションのユーザープロビジョニング自動化</li>
+          <li>公共機関ソフトウェア競合解決のための Hypervisor 隔離環境構築</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/toss">Slack Bot 自動化プロジェクトを見る →</a></p>
+      </div>
+
+      <div class="mb-6">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Ubiquoss — Technical Support Engineer</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2023.04 – 2024.04
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          京畿城南 · Network / Architect / Overseas Tech チーム
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>POSCO DX との Local 5G Network Architect プロジェクトリード — 独立して設計 / 設置 / 保守 (昇格後初のリードプロジェクト)</li>
+          <li>データセンタートラフィック安定性のための二重化監視 / failover 経路構成</li>
+          <li>超低遅延 / 高帯域幅環境チューニング + L4 ロードバランシング</li>
+          <li>L3 スイッチ OS 検証 (欠陥検出および安定性向上)</li>
+          <li>韓国 / 日本 / 米国 の顧客に向けたリアルタイム技術支援</li>
+        </ul>
+        <p class="text-sm mt-3"><a href="/projects/ubiquoss">Private 5G プロジェクトを見る →</a></p>
+      </div>
+
+      <div class="mb-4">
+        <div class="flex items-baseline justify-between gap-3 mb-1">
+          <h3 class="text-lg font-semibold m-0">Ubiquoss — Technical Support Associate</h3>
+          <span class="text-xs whitespace-nowrap" style="color: var(--fg-soft);">
+            2023.02 – 2023.04
+          </span>
+        </div>
+        <div class="text-sm mb-3" style="color: var(--fg-soft);">
+          京畿城南 · Network / Architect / Overseas Tech チーム
+        </div>
+        <ul class="text-sm list-disc list-inside space-y-1" style="color: var(--fg);">
+          <li>NAVER CLOUD との Local 5G Network Architect プロジェクト — key contributor</li>
+          <li>高帯域幅 / 低遅延 / 安定性のための active-active ネットワーク設計提案</li>
+          <li>シミュレーション環境構築 + 社内設計検証による現場設置の安定性確保</li>
+          <li>部署 / 階層単位のセグメンテーションとアクセス制御のための CIDR ベースサブネット設計</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">学歴</h2>
+      <ul class="space-y-2 text-sm">
+        <li>
+          <strong>学点銀行制 (韓国)</strong> — コンピュータサイエンス学士
+          <span style="color: var(--fg-soft);">(2021.01 – 2024.08)</span>
+        </li>
+        <li>
+          <strong>Cisco Networking Academy</strong> — System / Networking / LAN·WAN Management
+          履修課程
+          <span style="color: var(--fg-soft);">(2021 – 2022)</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">資格</h2>
+      <ul class="space-y-2 text-sm">
+        <li><strong>HashiCorp Certified: Terraform Associate (003)</strong></li>
+        <li><strong>ネットワーク管理士 2級</strong> — KAIT</li>
+        <li><strong>JLPT N1</strong> — 日本語能力試験</li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">言語</h2>
+      <ul class="space-y-2 text-sm">
+        <li><strong>韓国語</strong> — Native</li>
+        <li><strong>英語</strong> — Professional working proficiency</li>
+        <li><strong>日本語</strong> — Professional working proficiency (JLPT N1)</li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-xl font-semibold mb-4">スキル</h2>
+      <p class="text-sm" style="color: var(--fg);">
+        Linux, Windows, macOS · Python, TypeScript, SQL, Bash, PowerShell · ネットワーク (L2/L3, 5G
+        RAN/Core, SNMP, TCP/IP) · セキュリティ · 仮想化 (VMware vSphere / NSX) · 自動化 · Technical
+        Support · IaC (Terraform) · MCP (Model Context Protocol) · Coralogix · MSSQL · Snowflake
+        · Atlassian (JIRA / Confluence) · Zendesk · Microsoft 365
+      </p>
+    </section>
+
+    <section>
+      <p class="text-sm" style="color: var(--fg-soft);">
+        お問い合わせ歓迎します — <a href="/ja/contact">お問い合わせ</a>。
+      </p>
+    </section>
+
+    <footer class="border-t mt-16 pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      English: <a href="/about">about</a> · 한국어: <a href="/ko/about">소개</a>
+    </footer>
+  </article>
+</BaseLayout>

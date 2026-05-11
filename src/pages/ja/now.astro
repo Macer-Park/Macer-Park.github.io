@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="ja"
+  title="Now"
+  description="今取り組んでいること — 生きた信号。"
+  pathname="/ja/now"
+>
+  <article class="container-prose pt-20 pb-16">
+    <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+      生きたドキュメント · 最終更新 2026-05-06
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">Now</h1>
+    <p class="text-base mb-12" style="color: var(--fg-soft);">
+      Derek Sivers の <a href="https://nownownow.com/about" target="_blank" rel="noopener"
+        >/now</a
+      > の流れに着想を得たページ。ポートフォリオは静的だが、このページはそうではない。
+    </p>
+
+    <h2 class="text-xl font-semibold mt-8 mb-4">測定ウィンドウ</h2>
+    <p class="mb-4">
+      <strong>Investigation Thoroughness、4段階</strong>。composite ツールから導き出した結論を引用するとき
+      — どの discrepancy を見たかを具体的に書かないと warning が出るゲートを敷いた。5日間の測定ウィンドウが今週開く。5段階に進むには、false-positive 30% 未満、ゲートが週10回以上発火、その半数以上が見逃していた解決経路を回収する結果でなければならない。
+    </p>
+    <p>
+      <strong>Escalation Cognitive Frame Alignment</strong>。JIRA エスカレーションのフレーミングが、受け取るチームの追加情報要求率を下げるかを別途測定する。過去90日の baseline 抽出済み、変更後の比較待ち。目標:アシスタントルーティングの confidence 90% 以上、追加情報要求率 20% 以下。
+    </p>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">読んでいること / 考えていること</h2>
+    <ul class="list-disc list-inside" style="color: var(--fg-soft);">
+      <li>1人プロジェクトがコンテキスト限界でどう回復力を保てるか</li>
+      <li>transcripts がなかった時期の作業をどう回顧するか — git log が voice を支えなければならない時</li>
+      <li>permanent fix を本当に permanent にするものは何か</li>
+    </ul>
+
+    <h2 class="text-xl font-semibold mt-12 mb-4">していないこと</h2>
+    <p style="color: var(--fg-soft);">
+      ツールを増やすためにツールを増やすこと。sanctuary の次のステップは拡張ではなく、削ぎ落としだ。
+    </p>
+
+    <footer class="border-t mt-16 pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      English: <a href="/now">now</a> · 한국어: <a href="/ko/now">Now</a>
+    </footer>
+  </article>
+</BaseLayout>

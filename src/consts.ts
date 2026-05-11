@@ -23,6 +23,10 @@ export const TAGLINE = {
     headline: '하드웨어의 깊이와 AI 지능 사이를 잇는 인프라 엔지니어.',
     sub: '물리적 토대 위에서 논리적 지능을 살린다.',
   },
+  ja: {
+    headline: 'ハードウェアの深さとAI知能を橋渡しするインフラエンジニア。',
+    sub: '物理的な土台の上で論理的な知能を活かす。',
+  },
 };
 
 export const NAV = {
@@ -39,5 +43,12 @@ export const NAV = {
     { label: '코드화', href: '/ko/codification' },
     { label: 'Now', href: '/ko/now' },
     { label: '연락처', href: '/ko/contact' },
+  ],
+  ja: [
+    { label: 'プロフィール', href: '/ja/about' },
+    { label: 'プロジェクト', href: '/ja/#projects' },
+    { label: '体系化', href: '/ja/codification' },
+    { label: 'Now', href: '/ja/now' },
+    { label: 'お問い合わせ', href: '/ja/contact' },
   ],
 };

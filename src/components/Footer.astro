@@ -1,13 +1,19 @@
 ---
 import { AUTHOR } from '../consts';
 
+type Lang = 'en' | 'ko' | 'ja';
+
 interface Props {
-  lang: 'en' | 'ko';
+  lang: Lang;
 }
 
 const { lang } = Astro.props;
-const builtLine =
-  lang === 'ko' ? 'Astro + Tailwind으로 직접 작성.' : 'Built with Astro + Tailwind.';
+const builtLineMap: Record<Lang, string> = {
+  en: 'Built with Astro + Tailwind.',
+  ko: 'Astro + Tailwind으로 직접 작성.',
+  ja: 'Astro + Tailwindで自作。',
+};
+const builtLine = builtLineMap[lang];
 const copyrightYear = new Date().getFullYear();
 ---
 

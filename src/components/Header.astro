@@ -1,15 +1,20 @@
 ---
 import { SITE_TITLE, NAV } from '../consts';
 
+type Lang = 'en' | 'ko' | 'ja';
+
 interface Props {
-  lang: 'en' | 'ko';
+  lang: Lang;
 }
 
 const { lang } = Astro.props;
 const items = NAV[lang];
-const homeHref = lang === 'ko' ? '/ko/' : '/';
-const langSwitchLabel = lang === 'en' ? '한국어' : 'English';
-const langSwitchHref = lang === 'en' ? '/ko/' : '/';
+
+const homeHrefMap: Record<Lang, string> = { en: '/', ko: '/ko/', ja: '/ja/' };
+const homeHref = homeHrefMap[lang];
+
+const langLabel: Record<Lang, string> = { en: 'English', ko: '한국어', ja: '日本語' };
+const others: Lang[] = (['en', 'ko', 'ja'] as Lang[]).filter((l) => l !== lang);
 ---
 
 <header class="border-b" style="border-color: var(--border);">
@@ -19,7 +24,14 @@ const langSwitchHref = lang === 'en' ? '/ko/' : '/';
     </a>
     <nav class="flex items-center gap-6 text-sm" style="color: var(--fg-soft);">
       {items.map((item) => <a href={item.href}>{item.label}</a>)}
-      <a href={langSwitchHref} aria-label="Language switch">{langSwitchLabel}</a>
+      <span class="flex items-center gap-3" aria-label="Language switch">
+        {others.map((l, idx) => (
+          <>
+            {idx > 0 && <span aria-hidden="true">·</span>}
+            <a href={homeHrefMap[l]}>{langLabel[l]}</a>
+          </>
+        ))}
+      </span>
     </nav>
   </div>
 </header>

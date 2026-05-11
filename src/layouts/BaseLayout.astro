@@ -4,10 +4,12 @@ import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, AUTHOR } from '../consts';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+type Lang = 'en' | 'ko' | 'ja';
+
 interface Props {
   title?: string;
   description?: string;
-  lang?: 'en' | 'ko';
+  lang?: Lang;
   pathname?: string;
 }
 
@@ -18,12 +20,20 @@ const fullTitle = title ? `${title} — ${SITE_TITLE}` : baseTitle;
 const desc = description ?? SITE_DESCRIPTION;
 const canonical = new URL(pathname, SITE_URL).toString();
 
-const altLang = lang === 'en' ? 'ko' : 'en';
-const altPath =
-  lang === 'en'
-    ? `/ko${pathname === '/' ? '/' : pathname}`
-    : pathname.replace(/^\/ko/, '') || '/';
-const altUrl = new URL(altPath, SITE_URL).toString();
+const basePath = pathname.replace(/^\/(ko|ja)(?=\/|$)/, '') || '/';
+
+const localizePath = (target: Lang) => {
+  if (target === 'en') return basePath;
+  return basePath === '/' ? `/${target}/` : `/${target}${basePath}`;
+};
+
+const alternateLocales: Lang[] = (['en', 'ko', 'ja'] as Lang[]).filter((l) => l !== lang);
+
+const ogLocaleMap: Record<Lang, string> = {
+  en: 'en_US',
+  ko: 'ko_KR',
+  ja: 'ja_JP',
+};
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -50,14 +60,16 @@ const personSchema = {
     <meta name="description" content={desc} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={lang} href={canonical} />
-    <link rel="alternate" hreflang={altLang} href={altUrl} />
+    {alternateLocales.map((l) => (
+      <link rel="alternate" hreflang={l} href={new URL(localizePath(l), SITE_URL).toString()} />
+    ))}
     <link rel="alternate" hreflang="x-default" href={new URL('/', SITE_URL).toString()} />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:locale" content={lang === 'ko' ? 'ko_KR' : 'en_US'} />
+    <meta property="og:locale" content={ogLocaleMap[lang]} />
     <meta property="og:image" content={new URL('/og.svg', SITE_URL).toString()} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />

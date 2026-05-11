@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = '一ヶ月の体系化';
+const description =
+  'sanctuary が教えてくれた4つのこと — 危機、体系化、拡張、再発防止の回顧。';
+---
+
+<BaseLayout
+  lang="ja"
+  title={title}
+  description={description}
+  pathname="/ja/codification-1"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        回顧録 · 第1編 · 2026年4月 · 約 1,500字
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        一ヶ月の体系化 — sanctuary が教えてくれた4つのこと
+      </h1>
+      <p class="text-base" style="color: var(--fg-soft);">
+        2026-04-07 ~ 2026-05-06、一ヶ月間 sanctuary を作りながら学んだことの回顧。
+        転換点4つを時系列の逆順(危機 → 体系化 → 拡張 → 再発防止)ではなく、体系化の深さ順に並べた。
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. 危機</h2>
+      <p class="mb-4">
+        2026-04-24、同僚の一人がメッセージを送ってきた。<em
+          >"could you let me know why we cancelled the orders... did the merchant ask us to?"</em
+        > — 頭が真っ白になった。その日の Bulk Action 一回が10件の注文を意図しない Cancel 状態に
+        遷移させたことを、そのメッセージで初めて認知した。
+      </p>
+      <p class="mb-4">
+        シニアにすぐ状況を説明し、ワークアラウンドを求めた。彼が示した一行は明瞭だった —
+        マーチャントには「Technical Glitch」のトーンで詫び、再発防止を約束しろ、内部では
+        何がどう起きたかをそのまま共有しろ、と。外部用の語彙と内部用の事実を分けることが、
+        嘘ではなく礼儀であることを、その日初めて受け入れた。
+      </p>
+      <p>
+        事故直後、すぐに体系化に入った。RULE-118 hook + 不可逆 status ID ブロックリスト + DB enum
+        整合 + <code>verify_safety.sh</code> 13/13 ゲート。同時に気づいたことが一つ —
+        不可逆ツールは可能な限り自分で扱うことにした。使用頻度が低く、自分で扱うほど慣れて自信が
+        ついた。何でも AI に任せるのが正解ではないことを、最も高く払って学んだ日だ。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. 体系化</h2>
+      <p class="mb-4">
+        3日後、<code>check_response</code> が PASS を返した返信ドラフトから、内部用語がそのまま
+        外部に漏れる事例を発見した。機能使用の前後に差がほとんどなかった。<code>note_type</code>
+        パラメータの alias が正規化されておらず、検査自体が silent skip されていた。入力値が
+        schema と異なれば素通りさせる false positive だった。
+      </p>
+      <p class="mb-4">
+        最初はツールを疑った。しかし噛み砕けば、結局のところ自己検証不在の合理化だった。
+        自分が意図して作った機能を自分でもっと見ようともせず、AI が自分の意図通り完璧に
+        使ってくれることを願うのは、責任を押しつける卑怯な行動だった。SPEC 2026-05-04 で
+        入力正規化 + alias whitelist + mixed-language pattern をゲートとして束ねた。
+      </p>
+      <p>
+        追跡本能は不安から来る。ツールを信頼するということが、自分の検証の免除になっては
+        いけない — 二つ目の体系化の理由だった。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">3. 拡張</h2>
+      <p class="mb-4">
+        さかのぼれば 2026-04-07。ツールが増えるほど呼び出しごとの結果がコンテキストを重くし、
+        大きな結果が大きな思考品質を保証しないことを早めに認知していた。AI ツールが
+        「実使用検証を踏まえない」という疑いも、この頃から積もっていた。
+      </p>
+      <p class="mb-4">
+        解は量を減らすことではなく形を変えることだった。毎回同じ流れで同じデータを呼ぶ調査
+        パターンを、composite ツール(<code>price_verify</code>、<code>payment_forensics</code
+        >、<code>shipping_diagnostics</code>)に規格化 — 5〜8個のクエリ + 外部チャネル
+        (Coralogix、CI XML)+ auto discrepancy detection を1回の呼び出しに束ねた。一貫した
+        データ形式を得る代わりに、raw 調査のときの多様性の一部を諦めるということを認識しながら
+        作った。
+      </p>
+      <p>
+        削ぎ落とす勇気。ツールを増やすことが能力なら、削ることは勇気だ。sanctuary が7つの
+        サービスから1つの TypeScript サーバーへ統合されたのも、同じ筋の決定だった。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">4. 再発防止</h2>
+      <p class="mb-4">
+        2026-04-29、二つのチケットが同じ症状を持って来た。「以前の fix は fix ではなかった。」
+        そこでようやく見えた — ダブルチェックの基準を明確に定義しないまま、その基準を AI に
+        全面委任していた誤判が積み重なった結果だった。一時処置が恒久処置にすり替わった場所だ。
+      </p>
+      <p class="mb-4">
+        A から Z まで再調査した。今度は単発のチケット処理ではなく JIRA permanent fix チケットに
+        切り替えた。同じ時期に Snowflake 長期 archive 統合も行われた — MSSQL の90日 retention
+        の向こう側で「なぜまた発生したのか」を追跡するには archive が必要だった。偶然ではない。
+      </p>
+      <p>
+        最後まで行く動力は KPI ではない。一度始めたら「自分のもの」にしないと気が済まない性格、
+        そして体化したものを同僚に共有することで初めて組織が成長するという信念。だから、
+        すべてのツールの挙動を自分が完全に解釈できてこそ、体系化も意味を持つ。
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">消えた火種も、もう一度見よ。</blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      作成日 2026-05-06 · English: <a href="/codification-1">codification-1</a> · 한국어:
+      <a href="/ko/codification-1">1편</a> · 次の記事:
+      <a href="/ja/codification-2">第2編 — 境界での検証 →</a> · <a href="/ja/codification">一覧</a>
+    </footer>
+  </article>
+</BaseLayout>

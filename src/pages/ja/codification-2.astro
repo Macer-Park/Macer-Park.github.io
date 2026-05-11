@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = '境界での検証';
+const description =
+  '外部に触れるすべてのものの1次出典と次のアクション — マーチャント返信と AI 引用出典に対する二つの転換点。';
+---
+
+<BaseLayout
+  lang="ja"
+  title={title}
+  description={description}
+  pathname="/ja/codification-2"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        回顧録 · 第2編 · 2026年4–5月 · 約 700字
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        境界での検証 — 外部に触れるすべてのもの
+      </h1>
+      <p class="text-base mb-4" style="color: var(--fg-soft);">
+        <a href="/ja/codification-1">第1編</a>がシステムの中で自分がシステムをどう信頼するかの
+        回顧だったとすれば、第2編はシステムの外へ出ていくものを自分がどう検証するかの回顧。
+        二つの転換点、一つの thesis。
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. So What?</h2>
+      <p class="mb-4">
+        ある時から自分の返信ドラフトを見ながら、一言が頻繁に浮かんだ。<strong>"So What?"</strong>
+      </p>
+      <p class="mb-4">
+        マーチャントの立場でこの返信を受け取ったら、次に何をすればいいのか。技術的には正確だが
+        アクションがない返信。原因は分析したがマーチャントは何も始められない返信。それが
+        <em>So What</em> が浮かぶ返信だった。
+      </p>
+      <p class="mb-4">
+        「受け取り手のドメイン言語」という抽象表現がある。結局はマーチャントの目線に合わせる
+        という意味だ。自分はそこを重点的に掘り下げた。返信の最後の一行に <em
+          >「あなたはこういう状況にあり、次に X をしてください」</em
+        > を加える。その一行が返信の重みを変えるのを見た。
+      </p>
+      <p>
+        この思考はマーチャント返信で止まらなかった。Ops SC、JIRA エスカレーション、マネージャー
+        へのハンドオフ — 受け取り手が異なるドメイン言語を使うほど、より精密でなければ
+        ならなかった。結局 <code>check_response</code> の tone calibration ルール — 受信者が
+        誰かによって語彙と構造を別々に検査する — も、同じ思考から生まれた。
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. 検索アシスタントは始まりであって結論ではない</h2>
+      <p class="mb-4">
+        2026-05-02。社内 RAG ベースの検索アシスタントが作った検索結果の要約の上に、別の
+        LLM(ollama)を重ねてもう一度要約しようとする試みが自分の手にあった。
+      </p>
+      <p class="mb-4">
+        よく考えると答えは明瞭だった。<strong>検索アシスタントは調査の始まりを告げるツール</strong>だ。
+        過去のすべてのデータをサーチして一掴み渡してくれれば、そこから JIRA と Confluence MCP
+        で一つずつ全部 Fetch して真偽を把握すること — それが既に最も最適化された流れだった。
+        ollama でもう一度要約することは、合成された虚偽を作る道であって、結論を強化する道では
+        なかった。
+      </p>
+      <p>
+        いろいろ試した末の認定だ。一つの効果のないアイデアを諦めながら知ったのは、ツールごとに
+        自分の場所があるということ。検索アシスタントは出発点、MCP fetch は検証、結論の引用は1次
+        出典から。これを <code>gate_source_fetch.sh</code> hook で体系化した — 返信段階に入る
+        前に、アシスタントが引用した JIRA / Confluence / URL が本文 fetch まで至っていなければ
+        遮断する。
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">
+      外部に出ていくすべては、受け取り手の次の行動に責任を持つ。
+    </blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      作成日 2026-05-06 · English: <a href="/codification-2">codification-2</a> · 한국어:
+      <a href="/ko/codification-2">2편</a> · 前の記事:
+      <a href="/ja/codification-1">← 第1編 — 一ヶ月の体系化</a> · 次の記事:
+      <a href="/ja/codification-3">第3編 — 検証の検証 →</a> · <a href="/ja/codification">一覧</a>
+    </footer>
+  </article>
+</BaseLayout>

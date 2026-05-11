@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = '検証の検証';
+const description =
+  '体系化した検証自体を再び検証する回顧 — 通過印は検証の終わりではないという発見、そして自分のツールを自分の手で狭める layer。';
+---
+
+<BaseLayout
+  lang="ja"
+  title={title}
+  description={description}
+  pathname="/ja/codification-3"
+>
+  <article class="container-prose pt-20 pb-16">
+    <header class="mb-12">
+      <div class="text-xs uppercase tracking-widest mb-3" style="color: var(--fg-soft);">
+        回顧録 · 第3編 · 2026年4–5月 · 約 750字
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-semibold mb-4" style="line-height: 1.2;">
+        検証の検証 — 通過印の後の自己反省
+      </h1>
+      <p class="text-base mb-4" style="color: var(--fg-soft);">
+        <a href="/ja/codification-1">第1編</a>がシステムをどう体系化するか、<a
+          href="/ja/codification-2">第2編</a
+        >が外部へ出ていくものをどう検証するかの回顧だったとすれば、第3編は <em
+          >体系化した検証自体を再び検証する</em
+        > 回顧。二つの転換点、一つの thesis。
+      </p>
+    </header>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">1. 通過印は検証の終わりではない</h2>
+      <p class="mb-4">
+        <a href="/ja/codification-1">第1編</a>で RULE-118 hook + 不可逆 status ID ブロックリスト +
+        <code>verify_safety.sh</code> 13/13 ゲートで「全部体系化した」と締めくくっていた。
+        数日後、ふと開いてみると <code>settings.local.json</code> matcher で write ツール13個が
+        hook 実行対象から漏れていた。その日に分かった単純な事実 — <em>sh hook がすべてではない</em>。
+        hook 自体は通過しても、hook を経由しない raw 呼び出し経路がそのまま生きていた。
+      </p>
+      <p class="mb-4">
+        コードを読んで「ちゃんとできている」と判断したことが、まさにその場所で崩れた。通過印が
+        押されたという事実と、検証が実際に起きたという事実は別の命題だ。そこから <em
+          >実使用検証</em
+        > — 実際に呼び出しを投げて遮断されるか / 通過するか — の場所ができた。コード read は
+        仮説、実呼び出しが検証。
+      </p>
+      <p>表紙だけ見て判断するな。</p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4">2. 自分のツールを自分の手で再び狭める</h2>
+      <p class="mb-4">
+        2026-05-04。composite ツール — <code>price_verify</code>、<code>payment_forensics</code>、
+        <code>shipping_diagnostics</code> — の結果を引用する自分のパターンを見直していて、一つが
+        気にかかった。結果は少なかったが、どの discrepancy フィールド=値を見たかを明示しないまま
+        一般論で叙述するケースが多かったということ。単語一つ文一つが — 見直せば — 確実なデータに
+        触れていなかった。
+      </p>
+      <p>
+        そこで STAGE 4 PR1、warning-only gate を敷いた。composite の結果を引用しながら具体的な
+        discrepancy を引用しなければ warning が出る。第1編で composite ツールを作ったときの thesis
+        が「削ぎ落とす勇気」だったとすれば、今度はそのツールを使う自分の手を狭める layer だ。
+        ツールを作った人間がそのツールの使用を再び制限することは矛盾ではない — <em
+          >自己反省</em
+        >が一段深くなっただけのことだ。
+      </p>
+    </section>
+
+    <blockquote class="my-12 text-lg">
+      正解はない。その都度適切だと判断したものを使うだけ。
+    </blockquote>
+
+    <footer class="border-t pt-6 text-sm" style="border-color: var(--border); color: var(--fg-soft);">
+      作成日 2026-05-07 · English: <a href="/codification-3">codification-3</a> · 한국어:
+      <a href="/ko/codification-3">3편</a> · 前の記事:
+      <a href="/ja/codification-2">← 第2編 — 境界での検証</a> · <a href="/ja/codification">一覧</a>
+    </footer>
+  </article>
+</BaseLayout>
